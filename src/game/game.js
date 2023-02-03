@@ -5,7 +5,6 @@ class Game {
   }
 
   addSymbol(coords) {
-    // let target = 
     if (this.grid[coords[0]][coords[1]] != null) {throw new Error("Error, can't take turn in same position"); 
   } else {
     this.grid[coords[0]][coords[1]] = this.symbol
@@ -24,16 +23,11 @@ class Game {
     this.changeSymbol(this.symbol)
     this.addSymbol(coords)
   }
+
+  endGame() {
+    if (this.grid.indexOf(null) === -1) {
+    return 'Draw!' }
+  }
 } 
+
 module.exports = Game;
-
-
-// var b = true;
-
-// console.log(b); // true
-
-// b = !b;
-// console.log(b); // false
-
-// b = !b;
-// console.log(b); // true
