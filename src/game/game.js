@@ -1,24 +1,39 @@
 class Game {
   constructor() {
     this.grid = [[null, null, null],[null, null, null],[null, null, null]]
+    this.symbol = 'X'
   }
 
-  addSymbol(coords, symbol) {
-    this.grid[coords[0]][coords[1]] = symbol
-    return this.grid
+  addSymbol(coords) {
+    // let target = 
+    if (this.grid[coords[0]][coords[1]] != null) {throw new Error("Error, can't take turn in same position"); 
+  } else {
+    this.grid[coords[0]][coords[1]] = this.symbol
+    return this.grid}
   }
 
+  changeSymbol(currentSymbol) {
+    if (currentSymbol === 'O') {
+      this.symbol = 'X'
+    } else {
+      this.symbol = 'O'
+    }
+  } 
+
+  takeTurn(coords) {
+    this.changeSymbol(this.symbol)
+    this.addSymbol(coords)
+  }
 } 
 module.exports = Game;
 
-// input: [0,0]
-// coords[0] = this.grid[0]
-// coords[1] = this.grid[0][0]
-// output: this.grid[0][0]
-// [[symbol, null, null],[null, null, null],[null, null, null]]
 
-// array = [a,b,c]
+// var b = true;
 
-// array[0] = z
+// console.log(b); // true
 
-// [z,b,c]
+// b = !b;
+// console.log(b); // false
+
+// b = !b;
+// console.log(b); // true
